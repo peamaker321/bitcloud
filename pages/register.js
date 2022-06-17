@@ -83,7 +83,6 @@ function Register() {
       <Flex
         w="full"
         h={{ md: "fit-content" }}
-        bg="white"
         justifyContent="center"
         alignItems="center"
         py={20}
