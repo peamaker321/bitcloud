@@ -20,7 +20,7 @@ import { ToastContainer, toast } from "react-toastify";
 import { useFormik } from "formik";
 import axios from "axios";
 import "react-toastify/dist/ReactToastify.css";
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import CryptoChartTape from "../../components/common/CryptoChartTape";
 import Wrapper from "../../components/dashboard/Wrapper";
 import helpers from "../../helpers";
