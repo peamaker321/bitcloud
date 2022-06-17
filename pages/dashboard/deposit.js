@@ -71,7 +71,7 @@ function Deposit() {
   const { query } = useRouter();
   const form = useRef();
   const [cloudinaryUrl, setCloudinaryUrl] = useState("");
-  const user = helpers.getUserDetailsFromLocalStorage();
+  const [user, setUser] = useState({});
   const amount = query.amount;
 
   const handleImageUpload = async (values) => {
@@ -132,6 +132,15 @@ function Deposit() {
       }
     },
   });
+
+  async function fetchUser() {
+    const res = await helpers.getUserDetailsFromLocalStorage();
+    setUser(res);
+  }
+
+  useEffect(() => {
+    fetchUser();
+  }, []);
 
   return (
     <>
