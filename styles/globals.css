@@ -1,0 +1,23 @@
+html,
+body {
+  padding: 0;
+  margin: 0;
+  line-height: 1.7;
+}
+
+
+@font-face {
+  font-family: 'Rubik';
+  src: url('../assets/fonts/iJWKBXyIfDnIV7nBrXw.ttf');
+}
+
+* {
+  box-sizing: border-box;
+  font-family: 'Rubik';
+}
+
+#stats {
+  /* background: url(../assets/images/banner-bg.svg) no-repeat center;
+  background-size: cover; */
+  background-color: black;
+}
