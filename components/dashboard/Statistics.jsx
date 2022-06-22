@@ -39,9 +39,13 @@ function StatsCard(props) {
       py={"10"}
       //   border={"1px solid"}
       borderColor={useColorModeValue("gray.800", "gray.500")}
+      borderWidth={2}
+      border="1px solid whitesmoke"
       rounded={"0"}
-      bg="-webkit-gradient(linear,left top,left bottom,from(#ECC94B),to(#ECC94B))"
+      bg="white"
+      rounded={3}
       color="black"
+      shadow="md"
     >
       <Flex justifyContent={"space-between"}>
         <Box pl={{ base: 2, md: 4 }}>

@@ -78,6 +78,7 @@ function Register() {
   });
   return (
     <div>
+      <Navbar />
       <ToastContainer />
 
       <Flex
@@ -90,7 +91,7 @@ function Register() {
       >
         <div>
           <Heading fontSize="2xl" textAlign="center">
-            <Image src={logo} alt="" />
+            {/* <Image src={logo} alt="" /> */}
           </Heading>
 
           <Box w={{ base: "90%", md: "400px" }} m="auto" h="inherit">
@@ -215,6 +216,7 @@ function Register() {
       </Flex>
 
       <CryptoChartTape />
+      <Footer />
     </div>
   );
 }

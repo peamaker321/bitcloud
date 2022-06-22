@@ -1,11 +1,18 @@
 import axios from "axios";
-axios.defaults.baseURL = "https://radiant-savannah-73457.herokuapp.com/";
+// https://radiant-savannah-73457.herokuapp.com/
+axios.defaults.baseURL = "http://localhost:8080";
+axios.defaults.headers.common["Access-Control-Allow-Origin"] = "*";
+
+let headers = {
+  "Access-Control-Allow-Origin": "*",
+  "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS",
+};
 
 const helpers = {};
 
 helpers.login = async (data) => {
   try {
-    const res = await axios.post("/auth/login", data).then((v) => {
+    const res = await axios.post("/auth/login", data, headers).then((v) => {
       console.log(v);
       return v;
     });
@@ -66,7 +73,7 @@ helpers.addTransaction = async (data) => {
 
   try {
     const res = await axios
-      .post(`/transactions/${_id}/add`, data)
+      .post(`/transactions/${_id}/withdraw`, data)
       .then((resp) => resp.json())
       .then((data) => {
         console.log("data from transactions endpoint....", data);

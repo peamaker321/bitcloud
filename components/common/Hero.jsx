@@ -207,7 +207,7 @@ export default function Hero() {
             <Button
               colorScheme={"yellow"}
               as="a"
-              href="/account/login"
+              href="/register"
               size="lg"
               fontSize="md"
               fontWeight="normal"
@@ -220,7 +220,7 @@ export default function Hero() {
               variant="ghost"
               //   rounded={"full"}
               as="a"
-              href="/account/login"
+              href="/login"
               size="lg"
               fontSize="md"
               fontWeight="normal"

@@ -22,6 +22,14 @@ import {
   FiSettings,
   FiMenu,
 } from "react-icons/fi";
+import {
+  BiCloudDownload,
+  BiBox,
+  BiDollarCircle,
+  BiGridAlt,
+  BiTime,
+  BiLogOut,
+} from "react-icons/bi";
 import Logo from "../../assets/images/logo.svg";
 import Image from "next/image";
 import { IconType } from "react-icons";
@@ -29,11 +37,11 @@ import helpers from "../../helpers";
 import { useRouter } from "next/router";
 
 const LinkItems = [
-  { name: "Dashboard", href: "/dashboard" },
-  { name: "Fund Account", href: "/dashboard/payment" },
-  { name: "Investments", href: "/dashboard/invest" },
-  { name: "Withdraw Funds", href: "/dashboard/withdraw" },
-  { name: "Transaction History", href: "/dashboard/transactions" },
+  { name: "Dashboard", href: "/dashboard", icon: BiGridAlt },
+  { name: "Deposit", href: "/dashboard/payment", icon: BiCloudDownload },
+  { name: "Plans", href: "/dashboard/invest", icon: BiBox },
+  { name: "Withdraw", href: "/dashboard/withdraw", icon: BiDollarCircle },
+  { name: "History", href: "/dashboard/transactions", icon: BiTime },
 ];
 
 export default function Wrapper({ children }) {
@@ -100,6 +108,9 @@ const SidebarContent = ({ onClose, ...rest }) => {
         color="white"
         style={{ textDecoration: "none" }}
         p="4"
+        alignItems="center"
+        display="flex"
+        // bg="red"
         mx="4"
         mt={30}
         onClick={() => {
@@ -107,6 +118,14 @@ const SidebarContent = ({ onClose, ...rest }) => {
           Router.push("/");
         }}
       >
+        <Icon
+          mr="4"
+          fontSize="25"
+          _groupHover={{
+            color: "white",
+          }}
+          as={BiLogOut}
+        />
         Log out
       </Text>
     </Box>
@@ -136,7 +155,7 @@ const NavItem = ({ icon, href, children, ...rest }) => {
         {icon && (
           <Icon
             mr="4"
-            fontSize="16"
+            fontSize="25"
             _groupHover={{
               color: "white",
             }}

@@ -40,11 +40,7 @@ function Faq() {
         w="full"
         h={{ base: "xs", md: "xs" }}
         // bg="blue.400"
-        backgroundImage={
-          "url(https://images.unsplash.com/photo-1605792657660-596af9009e82?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8dHJhZGluZ3xlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60)"
-        }
-        backgroundSize={"cover"}
-        backgroundPosition={"center center"}
+        id="faq"
         // bgGradient={"linear(to-r, blackAlpha.600, transparent)"}
       >
         <VStack
@@ -69,35 +65,53 @@ function Faq() {
         </VStack>
       </Box>
       <Container maxW={"6xl"} mb={20}>
+        <Heading
+          lineHeight={"110%"}
+          fontSize={{ base: "2xl", sm: "4xl", md: "4xl" }}
+          fontWeight="bold"
+          mb={3}
+          textAlign={{ base: "left", md: "center" }}
+          mt={10}
+        >
+          <Text>Frequently Asked Questions</Text>
+        </Heading>
+        <Text textAlign={{ base: "left", md: "center" }}>
+          We answer some of your Frequently Asked Questions regarding bitcoin
+          and bitcoin cloud mining via email and contact us page. If you have a
+          query regarding bitcoin mining do not hesitate to kindly contact us.
+        </Text>
+
         <SimpleGrid
           columns={{ base: 1, xl: 2 }}
           spacing={"20"}
           mt={16}
           mx={"auto"}
         >
-          <Accordion color="blue.800">
+          <Accordion>
             <AccordionItem>
               <h2>
                 <AccordionButton>
-                  <Box flex="1" textAlign="left" color="blue.800">
-                    How can I purchase package?
+                  <Box flex="1" textAlign="left">
+                    Why is Bitcoin Trusted? ?
                   </Box>
                   <AccordionIcon />
                 </AccordionButton>
               </h2>
               <AccordionPanel pb={4}>
-                Buying package is very simple. Just sign up and login in it will
-                open your dashboard where you will find option of PRODUCT
-                PACKAGE. Click on this option and you’ll find all packages. You
-                can click on buy button there, make payment and you’re good to
-                go.
+                Bitcoin is trusted widely because it’s open-source and
+                decentralized. This means that the global public has access to
+                the entire Bitcoin source code at any time. All payments can be
+                made without reliance on a third-party and the whole system is
+                protected by heavily peer-reviewed cryptographic algorithms and
+                most important thing is no institution or organization can
+                control Bitcoin.
               </AccordionPanel>
             </AccordionItem>
 
             <AccordionItem>
               <h2>
                 <AccordionButton>
-                  <Box flex="1" textAlign="left" color="blue.800">
+                  <Box flex="1" textAlign="left">
                     How much I can earn maximum here?
                   </Box>
                   <AccordionIcon />
@@ -113,7 +127,7 @@ function Faq() {
             <AccordionItem>
               <h2>
                 <AccordionButton>
-                  <Box flex="1" textAlign="left" color="blue.800">
+                  <Box flex="1" textAlign="left">
                     How do I withdraw my earnings?
                   </Box>
                   <AccordionIcon />
@@ -130,23 +144,22 @@ function Faq() {
             <AccordionItem>
               <h2>
                 <AccordionButton>
-                  <Box flex="1" textAlign="left" color="blue.800">
-                    How does the platform generates profit?
+                  <Box flex="1" textAlign="left">
+                    How secure is my Wallet and Bitcoins?
                   </Box>
                   <AccordionIcon />
                 </AccordionButton>
               </h2>
               <AccordionPanel pb={4}>
-                Legit Crypto Options generates profit by trading in Top 10
-                crypto currencies. It’s AI trading bot generates profit via
-                arbitrage trading.
+                We always care about our miners. We are using SHA-256 algorithm
+                for Bitcoin mining as well as protection from DDoS attacks.
               </AccordionPanel>
             </AccordionItem>
 
             <AccordionItem>
               <h2>
                 <AccordionButton>
-                  <Box flex="1" textAlign="left" color="blue.800">
+                  <Box flex="1" textAlign="left">
                     Status of my withdrawal?
                   </Box>
                   <AccordionIcon />
@@ -162,16 +175,16 @@ function Faq() {
             <AccordionItem>
               <h2>
                 <AccordionButton>
-                  <Box flex="1" textAlign="left" color="blue.800">
-                    Who are the owners?
+                  <Box flex="1" textAlign="left">
+                    Is there any affiliate program?
                   </Box>
                   <AccordionIcon />
                 </AccordionButton>
               </h2>
               <AccordionPanel pb={4}>
-                We are a group of successful businessman from UK and the USA
-                from network marketing and traditional finance backgrounds who
-                own Empire Trades Fx Together. No one person owns this company.
+                Yes, there are different kinds of the affiliate program with us.
+                Please go to our affiliate page to know more about our affiliate
+                program
               </AccordionPanel>
             </AccordionItem>
           </Accordion>

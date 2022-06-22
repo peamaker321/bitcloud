@@ -92,7 +92,7 @@ function Login() {
   return (
     <div>
       <ToastContainer />
-      {/* <Navbar /> */}
+      <Navbar />
       <Flex
         w="100vw"
         h={{ md: "100vh", base: "100vh" }}
@@ -103,7 +103,7 @@ function Login() {
       >
         <div>
           <Heading fontSize="2xl" textAlign="center">
-            <Image src={logo} alt="" />
+            {/* <Image src={logo} alt="" /> */}
           </Heading>
           <Box
             w={{ base: "100%", md: "400px" }}
@@ -182,7 +182,7 @@ function Login() {
           </Box>
         </div>
       </Flex>
-      {/* <Footer /> */}
+      <Footer />
 
       <CryptoChartTape />
     </div>

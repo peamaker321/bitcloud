@@ -28,7 +28,7 @@ function Transactions() {
     async function getTx() {
       await helpers
         .getTransactions()
-        .then((data) => setTransactions(data?.data?.data));
+        .then((data) => setTransactions(data.data.data.transactions));
     }
 
     getTx();

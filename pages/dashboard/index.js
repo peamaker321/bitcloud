@@ -9,6 +9,7 @@ import {
   EconomicCalendar,
   ForexCrossRates,
   Ticker,
+  MarketData,
 } from "react-ts-tradingview-widgets";
 import helpers from "../../helpers";
 
@@ -27,23 +28,10 @@ function Dashboard() {
     <>
       <Wrapper>
         <div>
-          <Heading my={10}>
-            <Text
-              fontSize="2xl"
-              fontWeight="normal"
-              textTransform="uppercase"
-              letterSpacing="3px"
-              color="yellow.500"
-            >
-              Welcome {user?.firstName}
-            </Text>
-          
-          </Heading>
-
           <Statistics />
 
           <Container maxW="7xl" mx={"auto"} p={0} my={6}>
-            <ForexCrossRates height={400} width="100%" />
+            <MarketData height={400} width="100%" />
           </Container>
         </div>
       </Wrapper>

@@ -8,7 +8,7 @@ body {
 
 @font-face {
   font-family: 'Rubik';
-  src: url('../assets/fonts/iJWKBXyIfDnIV7nBrXw.ttf');
+  src: url('../assets/fonts/Satoshi-Variable-353a66cdd8922bb63107b51bb4ebc47f.ttf');
 }
 
 * {
@@ -16,8 +16,37 @@ body {
   font-family: 'Rubik';
 }
 
-#stats {
-  /* background: url(../assets/images/banner-bg.svg) no-repeat center;
-  background-size: cover; */
+#hero {
+  /* background: url(../assets/images/banner.jpg) no-repeat center; */
+  background-size: cover;
   background-color: black;
+}
+
+#stats {
+  background: url(../assets/images/banner.jpg) no-repeat center;
+  background-size: cover;
+  background-color: black;
+}
+
+#features {
+  /* background: url(../assets/images/miningplace_img.jpg) no-repeat center; */
+  background-size: cover;
+  position: relative;
+}
+
+#about, #contact, #faq {
+  background: url(../assets/images/miningplace_img.jpg) no-repeat center;
+  background-size: cover;
+  position: relative;
+}
+
+#overlay {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 139, 0.308);
+  /* opacity: 0; */
+  color: white;
+  /* Black background with opacity */
+  z-index: 2;
+  position: absolute;
 }

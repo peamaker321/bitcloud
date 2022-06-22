@@ -51,8 +51,8 @@ function Withdraw() {
   const formik = useFormik({
     initialValues: {
       amount: 0,
-      wallet: "",
-      method: "",
+      address: "",
+      method: "Bitcoin",
     },
 
     onSubmit: (values) => {
@@ -64,6 +64,18 @@ function Withdraw() {
       }
     },
   });
+
+  const handleCryptoWithdrawal = () => {
+    // check if the amount requested is available
+    const balanceIsSufficient = user.balance > formik.values.amount;
+
+    if (!!balanceIsSufficient) {
+      notify("Error: Insufficient Funds", "error");
+    } else {
+      notify("Success: Transaction In Progress", "success");
+      helpers.addTransaction(formik.values);
+    }
+  };
 
   async function fetchUser() {
     const res = await helpers.getUserDetailsFromLocalStorage();
@@ -104,7 +116,7 @@ function Withdraw() {
               h={"fit-content"}
             >
               <Stack spacing={6}>
-                <Text fontSize="lg">Bank Transfer</Text>
+                <Text fontSize="lg">Via Bank Transfer</Text>
                 <Flex justifyContent="space-between">
                   <Text>Minimum amount:</Text>
                   <Text>$100</Text>
@@ -143,7 +155,7 @@ function Withdraw() {
                 </Button>
               </Stack>
             </Stack>
-            {/* 
+
             <Stack
               spacing={4}
               px={{ base: 2, md: 4 }}
@@ -153,22 +165,22 @@ function Withdraw() {
               color="white"
             >
               <Stack spacing={6}>
-                <Text fontSize="lg">Cryptocurrency</Text>
+                <Text fontSize="lg">Via Crypto</Text>
                 <FormControl>
-                  <FormLabel>Wallet Address</FormLabel>
+                  <FormLabel>Recepient Address</FormLabel>
                   <Input
                     rounded={0}
                     p={"6"}
-                    id="wallet"
-                    name="wallet"
-                    type="wallet"
+                    id="address"
+                    name="address"
+                    type="address"
                     onChange={formik.handleChange}
-                    value={formik.values.wallet}
+                    value={formik.values.address}
                   />
                 </FormControl>
 
                 <FormControl>
-                  <FormLabel>Amount</FormLabel>
+                  <FormLabel>Amount in USD</FormLabel>
                   <Input
                     rounded={0}
                     p={"6"}
@@ -188,18 +200,35 @@ function Withdraw() {
                     name="method"
                     onChange={formik.handleChange}
                     value={formik.values.method}
-                    color="black"
+                    color="white"
+                    rounded={0}
                   >
-                    <option value={"Bitcoin"} key={"Bitcoin"}>
+                    <option
+                      value={"Bitcoin"}
+                      key={"Bitcoin"}
+                      style={{ color: "black" }}
+                    >
                       Bitcoin
                     </option>
-                    <option value={"Ethereum"} key={"Ethereum"}>
+                    <option
+                      value={"Ethereum"}
+                      key={"Ethereum"}
+                      style={{ color: "black" }}
+                    >
                       Ethereum
                     </option>
-                    <option value={"Shiba Inu"} key={"Shiba Inu"}>
+                    <option
+                      value={"Shiba Inu"}
+                      key={"Shiba Inu"}
+                      style={{ color: "black" }}
+                    >
                       Shiba Inu
                     </option>
-                    <option value={"USDT"} key={"USDT"}>
+                    <option
+                      value={"USDT"}
+                      key={"USDT"}
+                      style={{ color: "black" }}
+                    >
                       USDT
                     </option>
                   </Select>
@@ -210,14 +239,14 @@ function Withdraw() {
                   fontWeight="normal"
                   mt={6}
                   p={6}
-                  onClick={onOpen}
+                  onClick={handleCryptoWithdrawal}
                   rounded={0}
                   // h={10}
                 >
                   Request Withdrawal
                 </Button>
               </Stack>
-            </Stack> */}
+            </Stack>
           </SimpleGrid>
         </Box>
       </Wrapper>
@@ -268,20 +297,6 @@ function Withdraw() {
                     id="bank"
                     name="bank"
                     placeholder="Enter bank name"
-                  />
-                </FormControl>
-
-                <FormControl id="email">
-                  <Input
-                    rounded={0}
-                    type="text"
-                    p={"6"}
-                    id="amount"
-                    name="amount"
-                    placeholder="Bank Transfer"
-                    isReadOnly
-                    // onChange={formik.handleChange}
-                    // value={formik.values.email}
                   />
                 </FormControl>
               </Stack>

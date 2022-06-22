@@ -32,6 +32,7 @@ export default function Navbar() {
       <Flex
         bg={useColorModeValue("black", "gray.800")}
         color={useColorModeValue("white", "white")}
+        opacity={0.9}
         minH={"60px"}
         py={{ base: 2 }}
         px={{ base: 4 }}
@@ -80,7 +81,7 @@ export default function Navbar() {
             fontSize={"sm"}
             as={"a"}
             fontWeight={"normal"}
-            rounded="full"
+            rounded="0"
             color={"white"}
             bg={"yellow.400"}
             href={"/register"}
@@ -114,7 +115,7 @@ const DesktopNav = () => {
               <Link
                 p={2}
                 href={navItem.href ?? "#"}
-                fontSize={"sm"}
+                fontSize={"1rem"}
                 fontWeight={500}
                 color={linkColor}
                 _hover={{
@@ -258,8 +259,17 @@ const NAV_ITEMS = [
     label: "Home",
     href: "/",
   },
+
   {
-    label: "FAQ",
+    label: "Affilate",
+    href: "/affilate",
+  },
+  {
+    label: "Plans",
+    href: "/plan",
+  },
+  {
+    label: "FAQs",
     href: "/faq",
   },
   {

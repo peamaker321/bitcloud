@@ -38,11 +38,7 @@ function Contact() {
         w="full"
         h={{ base: "xs", md: "xs" }}
         // bg="blue.400"
-        backgroundImage={
-          "url(https://images.unsplash.com/photo-1605792657660-596af9009e82?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8dHJhZGluZ3xlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60)"
-        }
-        backgroundSize={"cover"}
-        backgroundPosition={"center center"}
+        id="contact"
         // bgGradient={"linear(to-r, blackAlpha.600, transparent)"}
       >
         <VStack
