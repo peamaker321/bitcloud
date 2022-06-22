@@ -74,7 +74,7 @@ function Privacy() {
             </Heading>
             <Text my={10}>
               Welcome to Bitcloud These terms and conditions outline the rules
-              and regulations for the use of bit-cloudminer.co's Website,
+              and regulations for the use of Bitcloud&apos; s Website,
               located at https://bitcloud.network. By accessing this website we
               assume you accept these terms and conditions. Do not continue to
               use bit-cloudminer.co if you do not agree to take all of the terms
@@ -83,10 +83,10 @@ function Privacy() {
             <Text mt={30}>
               The following terminology applies to these Terms and Conditions,
               Privacy Statement and Disclaimer Notice and all Agreements:
-              "Client", "You" and "Your" refers to you, the person log on this
-              website and compliant to the Company’s terms and conditions. "The
-              Company", "Ourselves", "We", "Our" and "Us", refers to our
-              Company. "Party", "Parties", or "Us", refers to both the Client
+              &quot;Client&quot;, &quot;You&quot; and &quot;Your&quot; refers to you, the person log on this
+              website and compliant to the Company’s terms and conditions. &quot;The
+              Company&quot;, &quot;Ourselves&quot;, &quot;We&quot;, &quot;Our&quot; and &quot;Us&quot;, refers to our
+              Company. &quot;Party&quot;, &quot;Parties&quot;, or &quot;Us&quot;, refers to both the Client
               and ourselves. All terms refer to the offer, acceptance and
               consideration of payment necessary to undertake the process of our
               assistance to the Client in the most appropriate manner for the
@@ -111,7 +111,7 @@ function Privacy() {
           </Heading>
           <Text p={4}>
             We employ the use of cookies. By accessing Bitcloud, you agreed to
-            use cookies in agreement with the Bitcloud's Privacy Policy. Most
+            use cookies in agreement with the Bitcloud&apos; s Privacy Policy. Most
             interactive websites use cookies to let us retrieve the user’s
             details for each visit. Cookies are used by our website to enable
             the functionality of certain areas to make it easier for people

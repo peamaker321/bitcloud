@@ -41,7 +41,6 @@ function StatsCard(props) {
       borderColor={useColorModeValue("gray.800", "gray.500")}
       borderWidth={2}
       border="1px solid whitesmoke"
-      rounded={"0"}
       bg="white"
       rounded={3}
       color="black"
