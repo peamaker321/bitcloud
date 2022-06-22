@@ -104,7 +104,7 @@ function Withdraw() {
             spacing={{ base: 5, lg: 8 }}
             mb={10}
           >
-            <Stack
+            {/* <Stack
               spacing={4}
               //   mt={12}
               px={{ base: 2, md: 4 }}
@@ -154,7 +154,7 @@ function Withdraw() {
                   Request Withdrawal
                 </Button>
               </Stack>
-            </Stack>
+            </Stack> */}
 
             <Stack
               spacing={4}

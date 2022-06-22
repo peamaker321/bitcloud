@@ -28,6 +28,9 @@ function Dashboard() {
     <>
       <Wrapper>
         <div>
+          <Text fontSize="2xl">
+            Welcome {user.firstName}
+          </Text>
           <Statistics />
 
           <Container maxW="7xl" mx={"auto"} p={0} my={6}>

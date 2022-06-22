@@ -14,6 +14,7 @@ import {
   SimpleGrid,
   useColorModeValue,
 } from "@chakra-ui/react";
+import { useRouter } from "next/router";
 import React from "react";
 import CryptoChartTape from "../../components/common/CryptoChartTape";
 import Wrapper from "../../components/dashboard/Wrapper";
@@ -26,6 +27,8 @@ export const InvestmentPlanCard = ({
   duration,
   minimumReturn,
 }) => {
+  const Router = useRouter();
+
   return (
     <Stat
       px={{ base: 2, md: 4 }}
@@ -58,6 +61,17 @@ export const InvestmentPlanCard = ({
             rounded={0}
             variant="solid"
             fontWeight="normal"
+            onClick={() =>
+              Router.push(
+                {
+                  pathname: "/dashboard/deposit",
+                  query: {
+                    amount: minimumAmount,
+                  },
+                },
+                "/dashboard/deposit"
+              )
+            }
           >
             Choose Plan
           </Button>
