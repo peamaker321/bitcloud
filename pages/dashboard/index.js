@@ -14,7 +14,7 @@ import {
 import helpers from "../../helpers";
 
 function Dashboard() {
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState({});
 
   async function fetchUser() {
     const res = await helpers.getUserDetailsFromLocalStorage();
@@ -29,7 +29,7 @@ function Dashboard() {
       <Wrapper>
         <div>
           <Text fontSize="2xl">
-            Welcome {user.firstName}
+            Welcome {user?.firstName}
           </Text>
           <Statistics />
 
