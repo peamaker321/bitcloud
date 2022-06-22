@@ -35,6 +35,7 @@ import Image from "next/image";
 import { IconType } from "react-icons";
 import helpers from "../../helpers";
 import { useRouter } from "next/router";
+import SupportBtn from "../common/SupportBtn";
 
 const LinkItems = [
   { name: "Dashboard", href: "/dashboard", icon: BiGridAlt },

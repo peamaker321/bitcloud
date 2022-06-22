@@ -69,10 +69,10 @@ function Withdraw() {
     // check if the amount requested is available
     const balanceIsSufficient = user.balance > formik.values.amount;
 
-    if (!!balanceIsSufficient) {
+    if (!balanceIsSufficient) {
       notify("Error: Insufficient Funds", "error");
     } else {
-      notify("Success: Transaction In Progress", "success");
+      notify("Success: Withdrawal in progress", "success");
       helpers.addTransaction(formik.values);
     }
   };

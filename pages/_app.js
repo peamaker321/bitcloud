@@ -1,4 +1,5 @@
 import { ChakraProvider } from "@chakra-ui/react";
+import SupportBtn from "../components/common/SupportBtn";
 import { AuthProvider } from "../context/auth";
 import "../styles/globals.css";
 
@@ -7,6 +8,8 @@ function MyApp({ Component, pageProps }) {
     <ChakraProvider>
       <AuthProvider>
         <Component {...pageProps} />
+
+        <SupportBtn />
       </AuthProvider>
     </ChakraProvider>
   );
