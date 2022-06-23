@@ -185,8 +185,7 @@ export default function Hero() {
         >
           <Heading
             // fontWeight={600}
-            fontSize={{ base: "2xl", sm: "4xl", md: "6xl" }}
-            lineHeight={"110%"}
+            fontSize={{ base: "3xl", sm: "4xl", md: "6xl" }}
             color="white"
           >
             <Text>Join The Global Leader Of Financial Investments</Text>

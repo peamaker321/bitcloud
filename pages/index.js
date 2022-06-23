@@ -67,7 +67,7 @@ function index() {
           </Text>
         </Stack>
 
-        <Container maxW={"6xl"} mt={10}>
+        <Container maxW={"6xl"} mt={10} textAlign="center">
           <SimpleGrid columns={{ base: 1, md: 2, lg: 3 }} spacing={10}>
             <Box p={12} borderRadius={"10px"}>
               <Image src={secure} alt="" />

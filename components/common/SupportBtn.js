@@ -7,8 +7,8 @@ function SupportBtn() {
   return (
     <Link
       pos="fixed"
-      bottom={{ base: "6rem", md: "20" }}
-      right={{ base: "22", md: "20" }}
+      bottom={{ base: "6rem", md: "55px" }}
+      right={{ base: "22", md: "10" }}
       bg="yellow.400"
       color="black"
       rounded={"full"}

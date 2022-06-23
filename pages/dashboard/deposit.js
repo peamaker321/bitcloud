@@ -101,7 +101,7 @@ function Deposit() {
         };
 
         console.log(transactionDetails);
-        await helpers.addTransaction(transactionDetails);
+        await helpers.deposit(transactionDetails);
         notify("Your payment is being reviewed.");
       });
   };

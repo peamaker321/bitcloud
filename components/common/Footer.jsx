@@ -9,6 +9,7 @@ import {
   Text,
   useColorModeValue,
 } from "@chakra-ui/react";
+import { MdLocationOn } from "react-icons/md";
 import Logo from "../../assets/images/logo.svg";
 
 const ListHeader = ({ children }) => {
@@ -34,6 +35,9 @@ export default function Footer() {
             <Box>
               <Image src={Logo} alt="" />
             </Box>
+            <Text fontSize={"sm"} display="flex" alignItems="center" gap="2">
+              <MdLocationOn size={20} /> 2717 Commervial Center Blvd Ste E200
+            </Text>
             <Text fontSize={"sm"}>
               © 2022 Bitcloud Templates. All rights reserved
             </Text>

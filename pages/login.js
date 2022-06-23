@@ -98,7 +98,6 @@ function Login() {
         h={{ md: "100vh", base: "100vh" }}
         justifyContent="center"
         alignItems="center"
-
         bg="gray.50"
       >
         <div>
@@ -172,11 +171,12 @@ function Login() {
                 </Button>
               </Stack>
 
+              <Text mt={3} color="yellow.500">
+                <Link href="/forgot-password">Forgot password?</Link>
+              </Text>
+
               <Text mt={3}>
-                New to Bitcloud?{" "}
-                <Link href="/register">
-                  Sign up
-                </Link>
+                New to Bitcloud? <Link href="/register">Sign up</Link>
               </Text>
             </form>
           </Box>

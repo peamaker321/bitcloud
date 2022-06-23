@@ -1,5 +1,5 @@
 import axios from "axios";
-// 
+//
 axios.defaults.baseURL = "https://radiant-savannah-73457.herokuapp.com";
 axios.defaults.headers.common["Access-Control-Allow-Origin"] = "*";
 
@@ -80,6 +80,65 @@ helpers.addTransaction = async (data) => {
         return data;
       })
       .catch((error) => {
+        return error;
+      });
+
+    return res;
+  } catch (error) {
+    return error;
+  }
+};
+
+helpers.deposit = async (data) => {
+  const { _id } = await helpers.getUserDetailsFromLocalStorage();
+  console.log("data...", data);
+
+  try {
+    const res = await axios
+      .post(`/transactions/${_id}/deposit`, data)
+      .then((resp) => resp.json())
+      .then((data) => {
+        console.log("data from transactions endpoint....", data);
+        return data;
+      })
+      .catch((error) => {
+        return error;
+      });
+
+    return res;
+  } catch (error) {
+    return error;
+  }
+};
+
+helpers.forgotPassword = async (email) => {
+  console.log("email from helpers.js", email);
+  try {
+    const res = await axios
+      .post(`users/forgot-password`, { email: email })
+      .then((v) => {
+        return v;
+      })
+      .catch((error) => {
+        // console.log("error gan gan", error);
+        return error;
+      });
+
+    return res;
+  } catch (error) {
+    return error;
+  }
+};
+
+helpers.resetPassword = async (data) => {
+  try {
+    const res = await axios
+      .post(`users/reset-password`, data)
+      .then((v) => {
+        return v;
+      })
+      .catch((error) => {
+        // console.log("error gan gan", error);
         return error;
       });
 
