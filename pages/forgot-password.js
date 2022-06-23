@@ -44,7 +44,7 @@ function ForgotPassword() {
       try {
         // code goes here
         console.log(values.email);
-        const res = await helpersforgotPassword(values.email).then((data) => {
+        const res = await helpers.forgotPassword(values.email).then((data) => {
           console.log(data);
           if (data?.name === "AxiosError") {
             notify("Error: Invalid email address", "error");
@@ -65,7 +65,7 @@ function ForgotPassword() {
       
       <ToastContainer />
       <Flex w="full" h="100vh" justifyContent="center" alignItems="center">
-        <Box w={{ base: "fit-content", md: "400px" }} h="300px" p={"12px 25px"}>
+        <Box w={{ base: "90%", md: "400px" }} h="300px" p={"12px 25px"}>
           <Stack align={"center"}>
             {/* <Image src={logo} alt="logo" /> */}
           </Stack>

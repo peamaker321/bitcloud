@@ -105,9 +105,9 @@ function Login() {
             {/* <Image src={logo} alt="" /> */}
           </Heading>
           <Box
-            w={{ base: "100%", md: "400px" }}
+            w={{ base: "90vw", md: "400px" }}
             h="fit-content"
-            p={{ base: 8, md: 8 }}
+            p={{ base: 0, md: 8 }}
           >
             <form onSubmit={formik.handleSubmit}>
               <Text
