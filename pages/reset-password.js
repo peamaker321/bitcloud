@@ -22,7 +22,7 @@ import { useRouter } from "next/router";
 import Navbar from "../components/common/Navbar";
 import CryptoChartTape from "../components/common/CryptoChartTape";
 
-function resetPassword() {
+function ResetPassword() {
   const [isLoading, setIsLoading] = useState(false);
   const Router = useRouter();
 
@@ -142,4 +142,4 @@ function resetPassword() {
   );
 }
 
-export default resetPassword;
+export default ResetPassword;

@@ -22,7 +22,7 @@ import { useRouter } from "next/router";
 import CryptoChartTape from "../components/common/CryptoChartTape";
 import Navbar from "../components/common/Navbar";
 
-function forgotPassword() {
+function ForgotPassword() {
   const [isLoading, setIsLoading] = useState(false);
   const Router = useRouter();
 
@@ -44,7 +44,7 @@ function forgotPassword() {
       try {
         // code goes here
         console.log(values.email);
-        const res = await helpers.forgotPassword(values.email).then((data) => {
+        const res = await helpersforgotPassword(values.email).then((data) => {
           console.log(data);
           if (data?.name === "AxiosError") {
             notify("Error: Invalid email address", "error");
@@ -118,4 +118,4 @@ function forgotPassword() {
   );
 }
 
-export default forgotPassword;
+export default ForgotPassword;
