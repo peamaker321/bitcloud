@@ -89,7 +89,6 @@ function ForgotPassword() {
                   p={"6"}
                   id="email"
                   name="email"
-                  type="email"
                   rounded={0}
                   onChange={formik.handleChange}
                   value={formik.values.email}
