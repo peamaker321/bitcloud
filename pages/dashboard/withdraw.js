@@ -54,26 +54,19 @@ function Withdraw() {
       address: "",
       method: "Bitcoin",
     },
-
-    onSubmit: (values) => {
-      console.log("submitting...");
-      if (user.amountDeposited < values.amount) {
-        notify("Error: Insufficient funds", "error");
-      } else {
-        notify("Withdrawal request successful", "success");
-      }
-    },
   });
 
   const handleCryptoWithdrawal = () => {
+    alert(user.balance);
+    alert(formik.values.amount);
     // check if the amount requested is available
-    const balanceIsSufficient = user.balance > formik.values.amount;
+    const balanceIsSufficient = user.balance >= formik.values.amount;
 
-    if (!balanceIsSufficient) {
-      notify("Error: Insufficient Funds", "error");
-    } else {
+    if (balanceIsSufficient) {
       notify("Success: Withdrawal in progress", "success");
-      helpers.addTransaction(formik.values);
+      helpers.addTransaction({ ...formik.values, from: user.firstName });
+    } else {
+      notify("Error: Insufficient Funds", "error");
     }
   };
 

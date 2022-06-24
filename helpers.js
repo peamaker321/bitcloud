@@ -1,6 +1,6 @@
 import axios from "axios";
-//
-axios.defaults.baseURL = "https://radiant-savannah-73457.herokuapp.com";
+//https://radiant-savannah-73457.herokuapp.com
+axios.defaults.baseURL = "http://localhost:8080";
 axios.defaults.headers.common["Access-Control-Allow-Origin"] = "*";
 
 let headers = {
