@@ -75,7 +75,7 @@ function Plan() {
         <SimpleGrid
           columns={{ base: 1, md: 3 }}
           spacing={{ base: 5, lg: 8 }}
-          mt={30}
+          my={30}
         >
           <InvestmentPlanCard
             title={"Basic Plan"}
