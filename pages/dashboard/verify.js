@@ -137,7 +137,7 @@ function Verify() {
                       key={"driversLicense"}
                       style={{ color: "black" }}
                     >
-                      Driver's License
+                      Driver&apos;s License
                     </option>
 
                     <option
