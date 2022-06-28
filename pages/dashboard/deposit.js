@@ -29,14 +29,14 @@ const CRYPRO_PAYMENT_DETAILS = [
   {
     id: 1,
     name: "Bitcoin",
-    address: "3Qnoo6xxHnDww8BRmYWahvqeX39c3rSYH6",
+    address: "bc1qxg36lz4q6x7v97mv558x7ezngpkndwn2hknfpl",
     icon: <Icon as={FaBitcoin} w={16} h={16} color="goldenrod" />,
   },
 
   {
     id: 2,
     name: "Ethereum (ERC20)",
-    address: "0x1ff3b52f6A9Ab0FD7748b1196c11375D96793B08",
+    address: "0x61feBAD473BeB403F4639EE59aF8d7698A5CB766",
     icon: <Icon as={FaEthereum} w={16} h={16} color="black" />,
   },
 ];
