@@ -14,7 +14,7 @@ import {
   FormControl,
   Input,
 } from "@chakra-ui/react";
-import React from "react";
+import React, { useState } from "react";
 import { useFormik } from "formik";
 import CryptoChartTape from "../../components/common/CryptoChartTape";
 import Wrapper from "../../components/dashboard/Wrapper";
@@ -24,10 +24,25 @@ function Payment() {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const Router = useRouter();
 
+  const validate = (values) => {
+    const errors = {};
+
+    if (/^[a-zA-Z]+$/.test(values.amount)) {
+      errors.amount = "Hint: Please input a number";
+    }
+
+    if (values.amount <= 0) {
+      errors.amount = "Hint: Please input a non-zero integer";
+    }
+
+    return errors;
+  };
+
   const formik = useFormik({
     initialValues: {
       amount: "",
     },
+    validate,
 
     onSubmit: (values) => {
       Router.push(
@@ -71,6 +86,12 @@ function Payment() {
             <ModalCloseButton />
             <ModalBody>
               <Stack spacing={4}>
+                {formik.errors.amount ? (
+                  <Text color="red.800" fontSize="small">
+                    {formik.errors.amount}
+                  </Text>
+                ) : null}
+
                 <FormControl id="amount">
                   <Input
                     type="text"
@@ -94,6 +115,7 @@ function Payment() {
                 mr={2}
                 fontWeight="normal"
                 type="submit"
+                disabled={formik.errors.amount}
               >
                 Continue
               </Button>

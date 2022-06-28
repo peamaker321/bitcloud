@@ -1,78 +1,32 @@
+import React, { useState, useRef, useEffect, useContext } from "react";
+import Wrapper from "../../components/dashboard/Wrapper";
 import {
   Heading,
   Text,
-  Alert,
-  Icon,
-  Flex,
-  Button,
-  Stack,
-  SimpleGrid,
   Box,
-  Select,
   FormControl,
-  useColorModeValue,
+  Button,
   FormLabel,
+  Stack,
   Input,
+  Select,
+  SimpleGrid,
+  useColorModeValue,
 } from "@chakra-ui/react";
-import { useRouter } from "next/router";
-import { FaEthereum, FaBitcoin } from "react-icons/fa";
 import { ToastContainer, toast } from "react-toastify";
 import { useFormik } from "formik";
 import axios from "axios";
 import "react-toastify/dist/ReactToastify.css";
-import React, { useRef, useState, useEffect } from "react";
 import CryptoChartTape from "../../components/common/CryptoChartTape";
-import Wrapper from "../../components/dashboard/Wrapper";
 import helpers from "../../helpers";
+import { AuthContext } from "../../context/auth";
 
-const CRYPRO_PAYMENT_DETAILS = [
-  {
-    id: 1,
-    name: "Bitcoin",
-    address: "3Qnoo6xxHnDww8BRmYWahvqeX39c3rSYH6",
-    icon: <Icon as={FaBitcoin} w={16} h={16} color="goldenrod" />,
-  },
-
-  {
-    id: 2,
-    name: "Ethereum (ERC20)",
-    address: "0x1ff3b52f6A9Ab0FD7748b1196c11375D96793B08",
-    icon: <Icon as={FaEthereum} w={16} h={16} color="black" />,
-  },
-];
-
-const Card = ({ title, text, icon, notify }) => {
-  return (
-    <Stack px={{ base: 2, md: 4 }} py={"5"}>
-      <Flex w={16} h={16} align={"center"} justify={"center"} mb={1}>
-        {icon}
-      </Flex>
-      <Text>{title}</Text>
-      <Button
-        variant="solid"
-        colorScheme="yellow"
-        px={6}
-        w="fit-content"
-        fontWeight="normal"
-        rounded={0}
-        onClick={() => {
-          navigator.clipboard.writeText(text);
-          notify(`copied`);
-        }}
-      >
-        Copy address
-      </Button>
-    </Stack>
-  );
-};
-
-function Deposit() {
+function Verify() {
   const [isLoading, setIsLoading] = useState(false);
-  const { query } = useRouter();
-  const form = useRef();
   const [cloudinaryUrl, setCloudinaryUrl] = useState("");
   const [user, setUser] = useState({});
-  const amount = query.amount;
+  const authContext = useContext(AuthContext);
+  const form = useRef();
 
   const handleImageUpload = async (values) => {
     const data = new FormData();
@@ -83,8 +37,6 @@ function Deposit() {
     data.append("upload_preset", "default");
     data.append("cloud_name", "dgn6edv1k");
 
-    console.log("file.....", file);
-
     await axios
       .post("https://api.cloudinary.com/v1_1/dgn6edv1k/image/upload", data)
       .then(async (data) => {
@@ -92,16 +44,14 @@ function Deposit() {
         setCloudinaryUrl(data.data.url);
       })
       .then(async () => {
-        const transactionDetails = {
+        const data = {
           url: cloudinaryUrl,
-          amount: amount,
-          method: values.method,
           from: firstName,
         };
 
-        console.log(transactionDetails);
-        await helpers.deposit(transactionDetails);
-        notify("Your payment is being reviewed.");
+        await helpers.verifyUser(data);
+
+        notify("Success: Verification Successful");
       })
       .catch((error) => console.log("error uploading file...", error));
   };
@@ -117,15 +67,20 @@ function Deposit() {
 
   const formik = useFormik({
     initialValues: {
-      method: "Bitcoin",
+      method: "driversLicense",
     },
 
     onSubmit: async (values) => {
       setIsLoading(true);
 
       try {
+        // code goes here
+        console.log(values);
         await handleImageUpload(values);
+        let v = { ...user, verified: true };
+        authContext.setUserDetails(v);
       } catch (error) {
+        // code goes here
         console.log(error);
       } finally {
         setIsLoading(false);
@@ -143,36 +98,16 @@ function Deposit() {
   }, []);
 
   return (
-    <>
+    <div>
       <Wrapper>
+        <Heading fontSize="2xl" mb={5} fontWeight="normal">
+          <Text>Verify Identity</Text>
+          <Text fontSize="small">
+            Verify your identity to unlock various features on Bitcloud.
+          </Text>
+        </Heading>
+
         <ToastContainer />
-
-        <Heading fontSize="2xl" fontWeight="normal">
-          <Text>Payment Information</Text>
-        </Heading>
-        <Alert maxW="3xl" mt={5} w="fit-content">
-          Please make your payment of ${query.amount} to any of the crypto
-          wallet addresses below.
-        </Alert>
-
-        <SimpleGrid columns={{ base: 2, md: 4 }} spacing={6} mt={10}>
-          {CRYPRO_PAYMENT_DETAILS.map((crypto) => {
-            return (
-              <Card
-                key={crypto.id}
-                icon={crypto.icon}
-                title={crypto.name}
-                text={crypto.address}
-                notify={notify}
-              />
-            );
-          })}
-        </SimpleGrid>
-
-        <Heading fontSize="2xl" mt={20} mb={5} fontWeight="normal">
-          <Text mb={2}>Already Made Payment? </Text>
-          <Text fontSize="1rem"> Please fill the proof of payment form </Text>
-        </Heading>
 
         <SimpleGrid columns={{ base: 1, md: 2 }} spacing={6} mb={20}>
           <Box
@@ -187,8 +122,8 @@ function Deposit() {
           >
             <form ref={form} onSubmit={formik.handleSubmit}>
               <Stack spacing={6}>
-              <FormControl mb={6} isRequired>
-                  <FormLabel>Select Payment Mode Used:</FormLabel>
+                <FormControl mb={6} isRequired>
+                  <FormLabel>Select Any Government Issued ID:</FormLabel>
                   <Select
                     placeholder=""
                     color="white"
@@ -198,25 +133,26 @@ function Deposit() {
                     rounded={0}
                   >
                     <option
-                      value={"Bitcoin"}
-                      key={"Bitcoin"}
+                      value={"driversLicense"}
+                      key={"driversLicense"}
                       style={{ color: "black" }}
                     >
-                      Bitcoin
+                      Driver's License
                     </option>
 
                     <option
-                      value={"Ethereum"}
-                      key={"Ethereum"}
+                      value={"socialSecurityCard"}
+                      key={"socialSecurityCard"}
                       style={{ color: "black" }}
                     >
-                      Ethereum
+                      Social Security Card
                     </option>
                   </Select>
                 </FormControl>
+
                 <FormControl id="email" isRequired>
                   <FormLabel fontWeight="normal">
-                    Upload proof of payment
+                    Upload A Picture Of Your Selected ID
                   </FormLabel>
                   <Input
                     type="file"
@@ -232,7 +168,7 @@ function Deposit() {
                     }}
                   />
                 </FormControl>
-              
+
                 <Stack spacing={10}>
                   <Button
                     colorScheme="yellow"
@@ -243,7 +179,7 @@ function Deposit() {
                     rounded={0}
                     isLoading={isLoading}
                   >
-                    Submit Receipt
+                    Verify My Account
                   </Button>
                 </Stack>
               </Stack>
@@ -253,8 +189,8 @@ function Deposit() {
       </Wrapper>
 
       <CryptoChartTape />
-    </>
+    </div>
   );
 }
 
-export default Deposit;
+export default Verify;

@@ -1,7 +1,10 @@
 import axios from "axios";
-//
-axios.defaults.baseURL = "https://radiant-savannah-73457.herokuapp.com";
-axios.defaults.headers.common["Access-Control-Allow-Origin"] = "*";
+const environment = {
+  prod: "https://radiant-savannah-73457.herokuapp.com",
+  dev: "http://localhost:8080",
+};
+axios.defaults.baseURL = environment.prod;
+// axios.defaults.headers.common["Access-Control-Allow-Origin"] = "*";
 
 let headers = {
   "Access-Control-Allow-Origin": "*",
@@ -139,6 +142,26 @@ helpers.resetPassword = async (data) => {
       })
       .catch((error) => {
         // console.log("error gan gan", error);
+        return error;
+      });
+
+    return res;
+  } catch (error) {
+    return error;
+  }
+};
+
+helpers.verifyUser = async (data) => {
+  const { _id } = await helpers.getUserDetailsFromLocalStorage();
+
+  try {
+    const res = await axios
+      .post(`/users/${_id}/verify`, data)
+      .then((resp) => resp.json())
+      .then((data) => {
+        return data;
+      })
+      .catch((error) => {
         return error;
       });
 
