@@ -47,7 +47,7 @@ function Login() {
 
       try {
         const res = await helpers.login(values).then((data) => {
-          if (data.response.status == 401) {
+          if (data.response?.status == 401) {
             notify("error", "Your account has been disabled");
             return;
           }
