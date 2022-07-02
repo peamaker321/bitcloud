@@ -58,7 +58,14 @@ function Withdraw() {
 
   const handleCryptoWithdrawal = () => {
     // check if the amount requested is available
-    const balanceIsSufficient = user.balance >= formik.values.amount;
+    const userBalance = new Number(user.balance);
+    const requestedAmount = new Number(formik.values.amount);
+
+    console.log(userBalance);
+    console.log(requestedAmount);
+
+    const balanceIsSufficient = userBalance >= requestedAmount;
+    console.log(balanceIsSufficient);
 
     if (balanceIsSufficient) {
       notify("Success: Withdrawal in progress", "success");

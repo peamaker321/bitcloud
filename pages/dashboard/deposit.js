@@ -14,8 +14,10 @@ import {
   FormLabel,
   Input,
 } from "@chakra-ui/react";
+import Image from "next/image";
 import { useRouter } from "next/router";
 import { FaEthereum, FaBitcoin } from "react-icons/fa";
+import usdt from "../../assets/images/usdt.png";
 import { ToastContainer, toast } from "react-toastify";
 import { useFormik } from "formik";
 import axios from "axios";
@@ -167,6 +169,27 @@ function Deposit() {
               />
             );
           })}
+
+          <Stack px={{ base: 2, md: 4 }} py={"5"}>
+            <Flex w={16} h={16} align={"center"} justify={"center"} mb={1}>
+              <Image src={usdt} alt=""/>
+            </Flex>
+            <Text>USDT</Text>
+            <Button
+              variant="solid"
+              colorScheme="yellow"
+              px={6}
+              w="fit-content"
+              fontWeight="normal"
+              rounded={0}
+              onClick={() => {
+                navigator.clipboard.writeText('0x61feBAD473BeB403F4639EE59aF8d7698A5CB766');
+                notify(`copied`);
+              }}
+            >
+              Copy address
+            </Button>
+          </Stack>
         </SimpleGrid>
 
         <Heading fontSize="2xl" mt={20} mb={5} fontWeight="normal">
@@ -187,7 +210,7 @@ function Deposit() {
           >
             <form ref={form} onSubmit={formik.handleSubmit}>
               <Stack spacing={6}>
-              <FormControl mb={6} isRequired>
+                <FormControl mb={6} isRequired>
                   <FormLabel>Select Payment Mode Used:</FormLabel>
                   <Select
                     placeholder=""
@@ -232,7 +255,7 @@ function Deposit() {
                     }}
                   />
                 </FormControl>
-              
+
                 <Stack spacing={10}>
                   <Button
                     colorScheme="yellow"
