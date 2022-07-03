@@ -235,6 +235,13 @@ function Deposit() {
                     >
                       Ethereum
                     </option>
+                    <option
+                      value={"USDT"}
+                      key={"USDT"}
+                      style={{ color: "black" }}
+                    >
+                      USDT
+                    </option>
                   </Select>
                 </FormControl>
                 <FormControl id="email" isRequired>
