@@ -47,6 +47,11 @@ function Login() {
 
       try {
         const res = await helpers.login(values).then((data) => {
+          if (data.response?.status == 401) {
+            notify("error", "Your account has been disabled");
+            return;
+          }
+
           if (data.name === "AxiosError") {
             notify("error", "Wrong email or password");
           } else {

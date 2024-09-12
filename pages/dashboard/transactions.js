@@ -13,6 +13,7 @@ import {
   Tbody,
   Thead,
   Tfoot,
+  Badge,
 } from "@chakra-ui/react";
 import { IoIosClock } from "react-icons/io";
 
@@ -26,9 +27,12 @@ function Transactions() {
 
   useEffect(() => {
     async function getTx() {
-      await helpers
-        .getTransactions()
-        .then((data) => setTransactions(data.data.data.transactions));
+      await helpers.getTransactions().then((data) => {
+        console.log("transactions", data);
+        const deposits = data.data.data.transactions;
+        const withdrawals = data.data.data.withdrawals;
+        setTransactions(deposits.concat(withdrawals));
+      });
     }
 
     getTx();
@@ -74,6 +78,16 @@ function Transactions() {
                     {" "}
                     Payment Method
                   </Th>
+                  <Th
+                    textTransform="capitalize"
+                    color="black"
+                    fontFamily="inherit"
+                    fontSize="1rem"
+                    fontWeight="normal"
+                  >
+                    {" "}
+                    Type
+                  </Th>
                 </Tr>
               </Thead>
               <Tbody>
@@ -81,8 +95,20 @@ function Transactions() {
                   return (
                     <Tr key={Math.random()}>
                       <Td>${tx?.amount}</Td>
-                      <Td>success</Td>
+                      <Td>
+                        <Badge
+                          bg="green.400"
+                          color="white"
+                          rounded="full"
+                          textTransform="capitalize"
+                          px={2}
+                          py={1}
+                        >
+                          Success
+                        </Badge>
+                      </Td>
                       <Td>{tx?.method}</Td>
+                      <Td>{tx?.type}</Td>
                     </Tr>
                   );
                 })}

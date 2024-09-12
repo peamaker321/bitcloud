@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import Wrapper from "../../components/dashboard/Wrapper";
-import { Heading, Text, Container, SimpleGrid } from "@chakra-ui/react";
+import { Heading, Text, Container, Alert } from "@chakra-ui/react";
+import Link from "next/link";
 import Statistics from "../../components/dashboard/Statistics";
 import CryptoChartTape from "../../components/common/CryptoChartTape";
 
@@ -12,6 +13,7 @@ import {
   MarketData,
 } from "react-ts-tradingview-widgets";
 import helpers from "../../helpers";
+import { AiFillWarning } from "react-icons/ai";
 
 function Dashboard() {
   const [user, setUser] = useState({});
@@ -28,9 +30,25 @@ function Dashboard() {
     <>
       <Wrapper>
         <div>
-          <Text fontSize="2xl">
-            Welcome {user?.firstName}
-          </Text>
+          {user?.verified && (
+            <Alert mb={10} w="fit-content" rounded={10} display="flex" gap="2">
+              <AiFillWarning color="#ECC94B" />
+              <Text>
+                Please verify your identity. Click{" "}
+                <Text textDecoration="underline" display="inline-flex" mr={1}>
+                  <Link
+                    href="/dashboard/verify"
+                    style={{ textDecoration: "underline !important" }}
+                  >
+                    here
+                  </Link>{" "}
+                </Text>
+                to get started
+              </Text>
+            </Alert>
+          )}
+
+          <Text fontSize="2xl">Welcome {user?.firstName}</Text>
           <Statistics />
 
           <Container maxW="7xl" mx={"auto"} p={0} my={6}>
