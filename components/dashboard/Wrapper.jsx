@@ -1,4 +1,4 @@
-import React, { ReactNode } from "react";
+import React, { useState, useEffect } from "react";
 import {
   IconButton,
   Box,
@@ -11,8 +11,7 @@ import {
   DrawerContent,
   Text,
   useDisclosure,
-  BoxProps,
-  FlexProps,
+  Alert,
 } from "@chakra-ui/react";
 import {
   FiHome,
@@ -30,6 +29,7 @@ import {
   BiTime,
   BiLogOut,
 } from "react-icons/bi";
+
 import Logo from "../../assets/images/logo.svg";
 import Image from "next/image";
 import { IconType } from "react-icons";
@@ -47,6 +47,17 @@ const LinkItems = [
 
 export default function Wrapper({ children }) {
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const [user, setUser] = useState(null);
+
+  async function fetchUser() {
+    const res = await helpers.getUserDetailsFromLocalStorage();
+    setUser(res);
+  }
+
+  useEffect(() => {
+    fetchUser();
+  }, []);
+
   return (
     <Box minH="100vh" bg={useColorModeValue("gray.100", "gray.900")}>
       <SidebarContent
